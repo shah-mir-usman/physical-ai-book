@@ -1,8 +1,6 @@
 #  Physical AI & Humanoid Robotics
 ### The Encyclopedia of Embodied Intelligence
 
-[![Deploy to GitHub Pages](https://github.com/SHAH-MIR-USMAN/physical-ai-book/actions/workflows/deploy.yml/badge.svg)](https://SHAH-MIR-USMAN.github.io/physical-ai-book/)
-
 > ** LIVE TEXTBOOK:** [**Click Here to Read**](https://SHAH-MIR-USMAN.github.io/physical-ai-book/)
 
 ---
@@ -52,7 +50,7 @@ If you want to contribute or run this book on your local machine:
     The site will open at `http://localhost:3000/physical-ai-book/`.
 
 ##  Author
-**Shah Mir Usman** *Aspiring Cybersecurity Porfesstional & Agentic AI Architect* *Panaversity & GIAIC Hackathon Project*
+**Shah Mir Usman** *Aspiring Cybersecurity Porfesstional & Agentic AI Architect* | *Panaversity & GIAIC Hackathon Project*
 
 ---
 *Built for the Future of Embodied Intelligence.*
