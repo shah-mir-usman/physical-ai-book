@@ -18,3 +18,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# --- BACKEND SECURITY ---
+backend/.env
+backend/config_keys.py
+backend/__pycache__/
+backend/qdrant_storage/
+*.pyc
