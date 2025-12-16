@@ -8,90 +8,78 @@ import google.generativeai as genai
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 from sentence_transformers import SentenceTransformer
-from dotenv import load_dotenv # Import kiya
+from dotenv import load_dotenv 
 
-# 👇👇 FIX: .env ko SABSE PEHLE load karo (Hamesha) 👇👇
 load_dotenv() 
-# 👆👆 Ab ye Qdrant ki keys bhi padh lega, chahe Google key kahin se bhi aaye.
 
-# ==========================================
-# 1. SMART CONFIGURATION
-# ==========================================
+
 api_key = None
 
-# TRY 1: Check Local Secret File
+
 try:
     from config_keys import GOOGLE_API_KEY
     api_key = GOOGLE_API_KEY
-    print(f"🔑 Loaded Google Key from config_keys.py")
+    print(f"Loaded Google Key from config_keys.py")
 except ImportError:
     pass
 
-# TRY 2: Check Environment Variables
+
 if not api_key:
     env_key = os.getenv("GOOGLE_API_KEY")
     if env_key:
         api_key = env_key.strip().replace('"', '').replace("'", "")
-        print(f"☁️ Loaded Google Key from Environment")
+        print(f"Loaded Google Key from Environment")
 
 if not api_key:
-    print("❌ CRITICAL ERROR: Google API Key kahin nahi mili!")
+    print("CRITICAL ERROR: Google API Key kahin nahi mili!")
 
-# Settings
+
 COLLECTION_NAME = "physical_ai_book"
 DOCS_DIR = "../docs"
 
 
-# ==========================================
-# 2. DATABASE SETUP (STRICTLY CLOUD)
-# ==========================================
-# Ab ye pakka milega kyunki humne upar load_dotenv() call kar diya hai
 qdrant_url = os.getenv("QDRANT_URL")
 qdrant_key = os.getenv("QDRANT_API_KEY")
 
-# Safai
+
 if qdrant_url: qdrant_url = qdrant_url.strip().replace('"', '').replace("'", "")
 if qdrant_key: qdrant_key = qdrant_key.strip().replace('"', '').replace("'", "")
 
 if qdrant_url and qdrant_key and len(qdrant_url) > 5:
-    print(f"☁️ Connecting to Qdrant Cloud... ({qdrant_url[:20]}...)")
+    print(f"Connecting to Qdrant Cloud... ({qdrant_url[:20]}...)")
     try:
         qdrant = QdrantClient(url=qdrant_url, api_key=qdrant_key)
-        # Test Connection
+        
         qdrant.get_collections()
-        print("✅ Connected to Cloud Database Successfully!")
+        print(" Connected to Cloud Database Successfully!")
     except Exception as e:
-        print(f"❌ CLOUD CONNECTION FAILED: {e}")
-        print("🛑 System stopping because Cloud Database is required.")
+        print(f" CLOUD CONNECTION FAILED: {e}")
+        print(" System stopping because Cloud Database is required.")
         raise e
 else:
-    print("❌ ERROR: QDRANT_URL or QDRANT_API_KEY missing in .env")
-    print("🛑 System stopping because Cloud Database is required.")
+    print(" ERROR: QDRANT_URL or QDRANT_API_KEY missing in .env")
+    print(" System stopping because Cloud Database is required.")
     raise ValueError("Cloud Credentials Missing")
 
-# Embedding Model
-print("⏳ Loading Embedding Model...")
+print(" Loading Embedding Model...")
 encoder = SentenceTransformer('all-MiniLM-L6-v2')
 
 
-# ==========================================
-# 3. AUTO-INGEST FUNCTION
-# ==========================================
 def ingest_book():
-    print("📡 Checking Cloud Database for Book...")
+    print("Checking Cloud Database for Book...")
     try:
         collections = qdrant.get_collections().collections
         for c in collections:
             if c.name == COLLECTION_NAME:
-                print("✅ Book already exists in Cloud Database.")
+                print("Book already exists in Cloud Database.")
                 return
     except Exception as e:
-        print(f"⚠️ Error checking collections: {e}")
+        print(f"Error checking collections: {e}")
 
-    print(f"🚀 Database Empty! Uploading Book from '{DOCS_DIR}' to Cloud...")
+    print(f"Database Empty! Uploading Book from '{DOCS_DIR}' to Cloud...")
     
     if not os.path.exists(DOCS_DIR):
-        print(f"❌ Docs folder missing at: {DOCS_DIR}")
+        print(f"Docs folder missing at: {DOCS_DIR}")
         return
 
     documents = []
@@ -105,13 +93,13 @@ def ingest_book():
                         documents.append({"text": chunk, "id": i})
             print(f"   -> Read file: {filepath}")
         except Exception as e:
-            print(f"   ⚠️ Could not read {filepath}: {e}")
+            print(f"Could not read {filepath}: {e}")
 
     if not documents:
-        print("❌ No text found in docs to upload!")
+        print("No text found in docs to upload!")
         return
     
-    print("☁️ Uploading vectors to Qdrant Cloud (Please wait)...")
+    print("Uploading vectors to Qdrant Cloud (Please wait)...")
     qdrant.recreate_collection(
         collection_name=COLLECTION_NAME,
         vectors_config=models.VectorParams(size=384, distance=models.Distance.COSINE),
@@ -123,12 +111,9 @@ def ingest_book():
         points.append(models.PointStruct(id=idx, vector=vector, payload={"text": doc["text"]}))
 
     qdrant.upsert(collection_name=COLLECTION_NAME, points=points)
-    print("✅ BOOK UPLOADED TO CLOUD SUCCESSFULLY!")
+    print("BOOK UPLOADED TO CLOUD SUCCESSFULLY!")
 
 
-# ==========================================
-# 4. APP & CHAT
-# ==========================================
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     ingest_book()
@@ -149,7 +134,7 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 async def chat(req: ChatRequest):
-    print(f"❓ User asked: {req.question}")
+    print(f" User asked: {req.question}")
     
     if not api_key:
         return {"answer": "Server Error: Google API Key missing."}
@@ -165,7 +150,7 @@ async def chat(req: ChatRequest):
         context += f"SELECTED:\n{req.selected_text}\n\n"
 
     try:
-        # Search in Cloud
+        
         query_vector = encoder.encode(req.question).tolist()
         hits = qdrant.search(collection_name=COLLECTION_NAME, query_vector=query_vector, limit=3)
 
@@ -178,11 +163,11 @@ async def chat(req: ChatRequest):
         Question: {req.question}"""
         
         response = local_model.generate_content(prompt)
-        print("✅ Answer Sent!")
+        print(" Answer Sent!")
         return {"answer": response.text}
 
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f" Error: {e}")
         return {"answer": f"Error: {str(e)}"}
 
 if __name__ == "__main__":
