@@ -1,41 +1,56 @@
-# Website
+#  Physical AI & Humanoid Robotics
+### The Encyclopedia of Embodied Intelligence
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+> ** LIVE TEXTBOOK:** [**Click Here to Read**](https://SHAH-MIR-USMAN.github.io/physical-ai-book/)
 
-## Installation
+---
 
-```bash
-yarn
-```
+##  Project Overview
+This project is a comprehensive **24-Chapter Digital Encyclopedia** developed for the **Panaversity & GIAIC Hackathon **. It bridges the critical gap between **Digital AI** (LLMs, Transformers) and **Physical AI** (Robotics, Control Theory).
 
-## Local Development
+Designed as a post-graduate level resource, it guides engineers from the mathematical foundations of Inverse Kinematics to deploying Vision-Language-Action (VLA) models on humanoid robots using **ROS 2** and **NVIDIA Isaac Sim**.
 
-```bash
-yarn start
-```
+## Curriculum Architecture
+The textbook is organized into **6 Advanced Modules**:
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+| Module | Focus Area | Key Technologies |
+| :--- | :--- | :--- |
+| **I** | **Mathematical Foundations** | Linear Algebra, Kinematics, Dynamics, Control Theory (PID/MPC) |
+| **II** | **The Nervous System** | ROS 2 (Humble), DDS Middleware, Real-Time Linux (PREEMPT_RT) |
+| **III** | **The Digital Twin** | Gazebo, Unity, Physics Engines, URDF/SDF Modeling |
+| **IV** | **Perception** | VSLAM, Sensor Fusion (EKF), Point Clouds, NVIDIA Isaac ROS |
+| **V** | **Navigation & Control** | Nav2 Stack, Path Planning (A*), Bipedal Locomotion |
+| **VI** | **Cognitive Robotics** | Generative AI, Vision Transformers (ViT), VLA Models, Voice Pipelines |
 
-## Build
+## 🛠️ Tech Stack
+* **Framework:** [Docusaurus 3](https://docusaurus.io/) (React-based Static Site Generator).
+* **Styling:** Custom CSS with Glassmorphism & Academic Typography (Inter/Merriweather).
+* **Deployment:** GitHub Pages (Automated Workflow).
+* **Math Rendering:** KaTeX / MDX.
 
-```bash
-yarn build
-```
+##  How to Run Locally
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+If you want to contribute or run this book on your local machine:
 
-## Deployment
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/SHAH-MIR-USMAN/physical-ai-book.git](https://github.com/SHAH-MIR-USMAN/physical-ai-book.git)
+    cd physical-ai-book
+    ```
 
-Using SSH:
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-```bash
-USE_SSH=true yarn deploy
-```
+3.  **Start the Local Server**
+    ```bash
+    npm start
+    ```
+    The site will open at `http://localhost:3000/physical-ai-book/`.
 
-Not using SSH:
+##  Author
+**Shah Mir Usman** *Aspiring Cybersecurity Porfesstional & Agentic AI Architect* | *Panaversity & GIAIC Hackathon Project*
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+---
+*Built for the Future of Embodied Intelligence.*
