@@ -9,7 +9,7 @@ export default function Home() {
       <div className="hero-section">
         <h1 className="hero-title">Physical AI &<br/>Humanoid Robotics</h1>
         <p className="hero-subtitle">
-          The definitive academic curriculum for Embodied Intelligence,<br/>
+          The Definitive Academic Curriculum for Embodied Intelligence,<br/>
           Control Theory, and Generative Robotics.
         </p>
         <Link to="/docs/intro" className="primary-btn">

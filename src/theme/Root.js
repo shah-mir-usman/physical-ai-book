@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-// --- STYLES (CSS) ---
-// Isko humne yahin rakha hai taaki alag file na banani pade
 const styles = `
   .chatbot-container {
     position: fixed;
@@ -152,7 +150,6 @@ export default function Root({ children }) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   
-  // Auto-scroll to bottom
   const messagesEndRef = useRef(null);
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -167,7 +164,6 @@ export default function Root({ children }) {
     setLoading(true);
 
     try {
-      // 👇👇 IMPORTANT: LOCALHOST URL (DEPLOYMENT KE BAAD CHANGE KARNA HAI) 👇👇
       const response = await fetch("http://127.0.0.1:8000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -177,7 +173,7 @@ export default function Root({ children }) {
       const data = await response.json();
       setMessages(prev => [...prev, { text: data.answer, sender: "bot" }]);
     } catch (error) {
-      setMessages(prev => [...prev, { text: "⚠️ Server Error. Check backend.", sender: "bot" }]);
+      setMessages(prev => [...prev, { text: "Server Error. Check backend.", sender: "bot" }]);
     }
     setLoading(false);
   };
@@ -191,7 +187,7 @@ export default function Root({ children }) {
         {isOpen && (
           <div className="chatbot-window">
             <div className="chatbot-header">
-              <h3>🤖 AI Book Assistant</h3>
+              <h3>Book Assistant</h3>
               <button className="close-btn" onClick={() => setIsOpen(false)}>×</button>
             </div>
 
