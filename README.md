@@ -68,15 +68,16 @@ Component | Technology | Description
 **AI Model** | Google Gemini 2.5 Flash | Large Language Model for reasoning |
 **Vector Database** | Qdrant (Cloud) | Storing and retrieving high-dimensional textbook embeddings |
 **Deployment** | Vercel	| Monorepo deployment handling both Python and Static assets |
-**Math Rendering** | KaTeX / MDX Rendering complex mathematical formulas |
+**Math Rendering** | KaTeX / MDX | Rendering complex mathematical formulas |
 
 ---
 
 ## Author
 
-**Shah Mir Usman**
-
-Aspiring Cybersecurity Professional & Agentic AI Architect|Panaversity & GIAIC Hackathon Project
+**SHAH MIR USMAN**
+Aspiring Cybersecurity Professional & Agentic AI Architect| 
+Panaversity & GIAIC 
+Hackathon Project
 
 
 **Built for the Future of Embodied Intelligence.**
