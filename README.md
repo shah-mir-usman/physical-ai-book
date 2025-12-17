@@ -62,6 +62,7 @@ graph TD;
 ## Technology Stack
 
 **Component  |	 Technology   |	  Description**
+| :--- | :--- | :--- |
 
 **Frontend Framework** | Docusaurus 3 (React) | Static Site Generator with custom Glassmorphism styling |
 **Backend API**	 | Python / FastAPI	| Asynchronous server for handling AI logic |
@@ -75,8 +76,8 @@ graph TD;
 ## Author
 
 **Shah Mir Usman**
----
+
 Aspiring Cybersecurity Professional & Agentic AI Architect|Panaversity & GIAIC Hackathon Project
----
+
 
 **Built for the Future of Embodied Intelligence.**
