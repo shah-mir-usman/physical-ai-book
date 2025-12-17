@@ -2,7 +2,6 @@
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-grey)
 ![Deployment](https://img.shields.io/badge/deployment-vercel-black)
 
 **LIVE TEXTBOOK:** [https://physical-ai-book-en2t.vercel.app](https://physical-ai-book-en2t.vercel.app)
@@ -13,7 +12,7 @@
 
 This project is a comprehensive **24-Chapter Digital Encyclopedia** developed for the **Panaversity & GIAIC Hackathon**. It bridges the critical gap between **Digital AI** (LLMs, Transformers) and **Physical AI** (Robotics, Control Theory).
 
-Beyond a standard static resource, this platform has been engineered as an **Interactive Intelligent System**. It integrates **Retrieval-Augmented Generation (RAG)** to provide a real-time AI Tutor capable of answering complex queries strictly based on the provided curriculum while maintaining the ability to handle general conversational context via Large Language Models.
+The development of this platform was accelerated using **Claude CLI** and **Spec Kit Plus**, enabling rapid prototyping of complex architectures. Beyond a standard static resource, this platform has been engineered as an **Interactive Intelligent System**. It integrates **Retrieval-Augmented Generation (RAG)** to provide a real-time AI Tutor capable of answering complex queries strictly based on the provided curriculum while maintaining the ability to handle general conversational context via Large Language Models.
 
 Designed as a post-graduate level resource, it guides engineers from the mathematical foundations of Inverse Kinematics to deploying Vision-Language-Action (VLA) models on humanoid robots using **ROS 2** and **NVIDIA Isaac Sim**.
 
@@ -49,7 +48,7 @@ The textbook is organized into **6 Advanced Modules**:
 
 The system operates on a decoupled architecture where the React frontend communicates with a Python FastAPI backend via RESTful API endpoints.
 
-```mermaid
+```
 graph TD;
     User[User Interface] -->|HTTP POST /chat| API[FastAPI Gateway];
     API -->|Text Input| Embedding[Google Gemini Embeddings];
@@ -62,18 +61,22 @@ graph TD;
 
 ## Technology Stack
 
-Component	Technology	Description
-Frontend Framework	Docusaurus 3 (React)	Static Site Generator with custom Glassmorphism styling.
-Backend API	Python / FastAPI	Asynchronous server for handling AI logic.
-AI Model	Google Gemini 2.5 Flash	Large Language Model for reasoning.
-Vector Database	Qdrant (Cloud)	Storing and retrieving high-dimensional textbook embeddings.
-Deployment	Vercel	Monorepo deployment handling both Python and Static assets.
-Math Rendering	KaTeX / MDX	Rendering complex mathematical formulas.
+**Component  |	 Technology   |	  Description**
+
+**Frontend Framework** | Docusaurus 3 (React) | Static Site Generator with custom Glassmorphism styling |
+**Backend API**	 | Python / FastAPI	| Asynchronous server for handling AI logic |
+**AI Model**	| Google Gemini 2.5 Flash | Large Language Model for reasoning |
+**Vector Database** | Qdrant (Cloud) | Storing and retrieving high-dimensional textbook embeddings |
+**Deployment** | Vercel	| Monorepo deployment handling both Python and Static assets |
+**Math Rendering** | KaTeX / MDX Rendering complex mathematical formulas |
 
 
 
-**Author**
-Shah Mir Usman 
+## Author
+
+**Shah Mir Usman**
+---
 Aspiring Cybersecurity Professional & Agentic AI Architect|Panaversity & GIAIC Hackathon Project
+---
 
 **Built for the Future of Embodied Intelligence.**
