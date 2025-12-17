@@ -61,9 +61,8 @@ graph TD;
 ---
 ## Technology Stack
 
-**Component  |	 Technology   |	  Description**
+Component | Technology | Description
 | :--- | :--- | :--- |
-
 **Frontend Framework** | Docusaurus 3 (React) | Static Site Generator with custom Glassmorphism styling |
 **Backend API**	| Python / FastAPI	| Asynchronous server for handling AI logic |
 **AI Model** | Google Gemini 2.5 Flash | Large Language Model for reasoning |
