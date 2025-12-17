@@ -2,10 +2,10 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 
 const config = {
-  title: 'PHYSICAL AI & Humanoid Robotics',
+  title: 'Physical AI & Humanoid Robotics',
   tagline: 'Advanced Robotics Curriculum',
   url: 'https://SHAH-MIR-USMAN.github.io',
-  baseUrl: '/physical-ai-book/',
+  baseUrl: '/',
   organizationName: 'SHAH-MIR-USMAN',
   projectName: 'physical-ai-book',
   onBrokenLinks: 'ignore',
