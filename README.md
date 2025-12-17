@@ -72,12 +72,4 @@ Component | Technology | Description
 
 ---
 
-## Author
-
-**SHAH MIR USMAN**
-Aspiring Cybersecurity Professional & Agentic AI Architect| 
-Panaversity & GIAIC 
-Hackathon Project
-
-
 **Built for the Future of Embodied Intelligence.**
