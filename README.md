@@ -58,20 +58,20 @@ graph TD;
     LLM -->|Generated Response| API;
     API -->|JSON Response| User;
 ```
-
+---
 ## Technology Stack
 
 **Component  |	 Technology   |	  Description**
 | :--- | :--- | :--- |
 
 **Frontend Framework** | Docusaurus 3 (React) | Static Site Generator with custom Glassmorphism styling |
-**Backend API**	 | Python / FastAPI	| Asynchronous server for handling AI logic |
-**AI Model**	| Google Gemini 2.5 Flash | Large Language Model for reasoning |
+**Backend API**	| Python / FastAPI	| Asynchronous server for handling AI logic |
+**AI Model** | Google Gemini 2.5 Flash | Large Language Model for reasoning |
 **Vector Database** | Qdrant (Cloud) | Storing and retrieving high-dimensional textbook embeddings |
 **Deployment** | Vercel	| Monorepo deployment handling both Python and Static assets |
 **Math Rendering** | KaTeX / MDX Rendering complex mathematical formulas |
 
-
+---
 
 ## Author
 
