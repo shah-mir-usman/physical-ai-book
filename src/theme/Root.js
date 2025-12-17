@@ -164,7 +164,7 @@ export default function Root({ children }) {
     setLoading(true);
 
     try {
-      const response = await fetch("https://hackathon-project.vercel.app/chat", {
+      const response = await fetch("https://physical-ai-book-en2t.vercel.app/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: userMessage }),
