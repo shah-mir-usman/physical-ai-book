@@ -1,7 +1,7 @@
 #  Physical AI & Humanoid Robotics
 ### The Encyclopedia of Embodied Intelligence
 
-**LIVE TEXTBOOK:** [**Click Here to Read**](https://SHAH-MIR-USMAN.github.io/physical-ai-book/)
+**LIVE TEXTBOOK:** [**Click Here to Read**](physical-ai-book-en2t.vercel.app)
 
 ---
 
